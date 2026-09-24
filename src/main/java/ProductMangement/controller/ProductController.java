@@ -17,12 +17,10 @@ public class ProductController {
 
     private final ProductService productService;
 
-    // Constructor Injection
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
-    // CREATE PRODUCT
     @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
 
@@ -31,7 +29,7 @@ public class ProductController {
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
-    // GET ALL PRODUCTS
+  
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
 
@@ -40,7 +38,7 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-    // GET PRODUCT BY ID
+    
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
 
@@ -49,7 +47,7 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // UPDATE PRODUCT
+   
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(
             @PathVariable Long id,
@@ -60,7 +58,7 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
-    // DELETE PRODUCT
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
 
