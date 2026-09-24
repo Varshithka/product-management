@@ -15,27 +15,24 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    // Constructor Injection
+    /
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    // Create Product
+   
     public Product addProduct(Product product) {
         return productRepository.save(product);
     }
 
-    // Get All Products
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    // Get Product By ID
     public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
 
-    // Update Product
     public Product updateProduct(Long id, Product productDetails) {
 
         Product existingProduct = productRepository.findById(id)
@@ -49,7 +46,7 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
 
-    // Delete Product
+  
     public void deleteProduct(Long id) {
 
         if (!productRepository.existsById(id)) {
